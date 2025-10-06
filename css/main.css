@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "Custom Font";
+    src: url("mycustomfont.woff2") format("woff2"),
+    url("mycustomfont.woff") format("woff"),
+    url("mycustomfont.ttf") format("truetype");
+}
+
+a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
+button {
+    padding: 16px 24px;
+    border-radius: 24px;
+    background: rgba(50, 205, 3, 1);
+}
+
+body {
+    background: rgba(17, 17, 17, 1);
+}
+
+header,
+footer,
+section {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+    gap: 34px
+}
+
+RF Dewi Expanded 900
+RF Dewi Expanded 700
+RF Dewi Expanded 400
