@@ -1,43 +1,217 @@
+/* Regular */
 @font-face {
-    font-family: "Custom Font";
-    src: url("mycustomfont.woff2") format("woff2"),
-    url("mycustomfont.woff") format("woff"),
-    url("mycustomfont.ttf") format("truetype");
+    font-family: "RFDewi";
+    src: url("../font/RFDewiExpanded-Regular.woff2") format("woff2"),
+         url("../font/RFDewiExpanded-Regular.woff") format("woff"),
+         url("../font/RFDewiExpanded-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Bold */
+@font-face {
+    font-family: "RFDewi";
+    src: url("../font/RFDewiExpanded-Bold.woff2") format("woff2"),
+         url("../font/RFDewiExpanded-Bold.woff") format("woff"),
+         url("../font/RFDewiExpanded-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Light */
+@font-face {
+    font-family: "RFDewi";
+    src: url("../font/RFDewiExpanded-Light.woff2") format("woff2"),
+         url("../font/RFDewiExpanded-Light.woff") format("woff"),
+         url("../font/RFDewiExpanded-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Black */
+@font-face {
+    font-family: "RFDewi";
+    src: url("../font/RFDewiExpanded-Black.woff2") format("woff2"),
+         url("../font/RFDewiExpanded-Black.woff") format("woff"),
+         url("../font/RFDewiExpanded-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --text-font: "RFDewi";
+    --main-color: rgba(255, 255, 255, 1);
+    --second-color: rgba(175, 175, 175, 1);
+    --button-color: rgba(50, 205, 3, 1); 
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    margin: 0;
+}
+
+h1, .h1 {
+    font-size: 96px;
+    font-weight: 900;
+}
+
+h2, .h2 {
+    font-size: 56px;
+    font-weight: 800;
+}
+
+h3, .h3 {
+    font-size: 32px;
+    font-weight: 800;
+}
+
+h4, .h4 {
+    
+}
+
+h5, .h5 {
+    
+}
+
+h6, .h6 {
+    
 }
 
 a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 1);
+    color: var(--main-color);
 }
 
 button {
     padding: 16px 24px;
+    font-weight: 700;
+    border: none;
     border-radius: 24px;
-    background: rgba(50, 205, 3, 1);
+    background: var(--button-color);
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 body {
+    position: relative;
+    font-family: "RFDewi";
+    color: var(--main-color);
     background: rgba(17, 17, 17, 1);
 }
 
-header,
-footer,
-section {
-    max-width: 1600px;
-    margin: 0 auto;
+.intro_hours,
+.intro_date {
+    font-size: 32px;
+    font-weight: 900;
 }
 
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 48px 0;
+    max-width: 1600px;
+    margin: 0 auto;    
+}
+footer {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+section {
+    max-width: 1600px;
+    margin: 0 auto 40px auto;
+}
+
+section.glass {
+    max-width: 1420px;
+    padding: 60px 90px;
+    margin: 0 auto 40px auto;
+    border-radius: 40px;
 }
 
 .menu {
     display: flex;
-    gap: 34px
+    gap: 34px;
 }
 
-RF Dewi Expanded 900
-RF Dewi Expanded 700
-RF Dewi Expanded 400
+.intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.subtitle {
+    color: var(--second-color);
+    font-size: 18px;
+}
+
+.intro_subtitle {
+    margin-top: 36px;
+}
+
+.glass {
+    background-color: rgba(0, 3, 0, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.intro_info-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 400px;
+}
+
+.intro_info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 360px;
+    padding: 24px 40px 32px 40px;
+    border-radius: 20px;
+    background: rgba(17, 17, 17, 0.2);
+    text-align: right;
+}
+
+.buble-1 {
+    position: absolute;
+    top: -496px;
+    left: -512px;
+    width: 1189px;
+    height: 1189px;
+    opacity: 0.3;
+    background: radial-gradient(50% 50% at 50% 50%, #32CD03 0%, #000000 100%);
+    backdrop-filter: blur(500px);
+    mix-blend-mode: lighten;
+    z-index: -1;
+}
+
+.buble-2 {
+    position: absolute;
+    top: 519px;
+    right: 31px;
+    width: 903px;
+    height: 903px;
+    opacity: 0.3;
+    background: radial-gradient(50% 50% at 50% 50%, #BBE114 0%, #000000 100%);
+    backdrop-filter: blur(500px);
+    mix-blend-mode: lighten;
+    z-index: -1;
+}
+
+.about_advantages {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    margin-top: 100px;
+}
