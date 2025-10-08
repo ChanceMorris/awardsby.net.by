@@ -9,6 +9,7 @@ const swiper = new Swiper('.swiper', {
         prevEl: '.swiper-controls-next',
     },
 });
+
 // Скрпит Fancybox
 document.addEventListener("DOMContentLoaded", function() {
 	Fancybox.bind("[data-fancybox]", {
