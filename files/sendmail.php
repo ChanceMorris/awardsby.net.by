@@ -17,11 +17,11 @@ try {
         throw new Exception('Invalid input!');
     }
 
-    $mail->setFrom('major@nakrutka-p-f.ru', 'Mailer');
-    $mail->addAddress('major@nakrutka-p-f.ru', 'Recipient Name');
+    $mail->setFrom('lavinaanana@gmail.com', 'Mailer');
+    $mail->addAddress('lavinaanana@gmail.com', 'Recipient Name');
     $mail->isHTML(true);
-    $mail->Subject = 'Новая заявка ПФ';
-    $mail->Body    = "Телефон: {$tel}<br>Сообщение: {$text}";
+    $mail->Subject = 'Новая заявка AWARDSBYNET';
+    $mail->Body    = "Телефон: {$tel}<br>Сайт: {$text}";
 
     if(!$mail->send()) {
         echo 'Message could not be sent.';

@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWARDS BY NET</title>
+    <title>AWARDS BY NET - Первый рейтинг маркетинговых компаний Беларуси 2026</title>
+    <meta name="description" content="Первая ежегодная премия в сфере web-маркетинга AWARDS BY NET. Честный рейтинг 80+ компаний Беларуси без платных номинаций.">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="img/logo.png" as="image">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    
+    <!-- External CSS with preconnect -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="bubbles-container">
@@ -18,23 +33,25 @@
         <div class="buble-5"></div>
         <div class="buble-6"></div>
     </div>
-    <header>
+    <header class="header-fixed">
         <div class="header">
             <a href="" class="logo">
                 <img src="img/logo.png" alt="Логотип awardsby.net">
             </a>
-            <div class="menu">
-                <a href="">О НАС</a>
-                <a href=""> ЗАЧЕМ И ПОЧЕМУ</a>
-                <a href="">УЧАСТНИКИ</a>
-                <a href="">МЕСТО</a>
-                <a href="">БЛАГОТВОРИТЕЛЬНОСТЬ</a>
-            </div>
+
+            <nav class="menu">
+                <a href="#about">О НАС</a>
+                <a href="#why">ЗАЧЕМ И ПОЧЕМУ</a>
+                <a href="#participants">УЧАСТНИКИ</a>
+                <a href="#venue">МЕСТО</a>
+                <a href="#charity">БЛАГОТВОРИТЕЛЬНОСТЬ</a>
+            </nav>
+
             <button class="button-style-1" data-fancybox data-src="#consulting">ПРИНЯТЬ УЧАСТИЕ</button>
         </div>
     </header>
     <main>
-        <section id="intro" class="intro mw-md glass">
+        <section class="intro mw-md glass">
             <div class="intro_hello">
                 <h1 class="intro_title h1">
                     ПЕРВЫЙ РЕЙТИНГ 2026
@@ -114,36 +131,36 @@
                     </div>
                 </div>
             </div>
-            <div class="why_advtantages">
-                <div class="why_advtantages-item">
+            <div class="why_advantages">
+                <div class="why_advantages-item">
                     <img src="img/advantage-1.png" alt="">
                     <p>
                         Мы не создаём номинации, где<br>
                         один участник — уже победитель
                     </p>
                 </div>
-                <div class="why_advtantages-item">
+                <div class="why_advantages-item">
                     <img src="img/advantage-2.png" alt="">
                     <p>
                         Никаких взносов<br>
                         Никаких платных номинаций
                     </p>
                 </div>
-                <div class="why_advtantages-item">
+                <div class="why_advantages-item">
                     <img src="img/advantage-3.png" alt="">
                     <p>
                         Мы не участвуем в собственных<br>
                         рейтингах, и не раздаём себе награды
                     </p>
                 </div>
-                <div class="why_advtantages-item">
+                <div class="why_advantages-item">
                     <img src="img/advantage-4.png" alt="">
                     <p>
                         Вы не платите за участие, и не
                         <br>можете «купить место»
                     </p>
                 </div>
-                <div class="why_advtantages-item">
+                <div class="why_advantages-item">
                     <img src="img/advantage-5.png" alt="">
                     <p>
                         Это — реальное сравнение среди<br>
@@ -165,10 +182,33 @@
             <div class="subtitle">Найти себя или свою компанию через поиск!</div>
             <div class="participants_search">
                 <div class="search">
-                    <input type="search" placeholder="🔍 Введите название компании">
+                    <input type="search" name="search" placeholder="🔍 Введите название компании">
                     <button type="submit">ПРОВЕРИТЬ УЧАСТИЕ</button>
                 </div>
             </div>
+
+            <div class="participants_suggestions">
+                <div class="suggestions" hidden></div>
+            </div>
+
+            <div class="participants_result">
+                <div class="search-result" hidden>
+                    <div class="search_success">
+                        <p class="h2">Вы участвуете!</p>
+                        <p class="subtitle">Узнать результаты можно на предстоящем мероприятии</p>
+                        <button class="button-style-1">ПОСЕТИТЬ МЕРОПРИЯТИЕ</button>
+                    </div>
+                    <div class="search_error">
+                        <p class="h2">Мы не нашли вас</p>
+                        <p class="subtitle">Заполните форму и примите участие!</p>
+                        <button class="button-style-1" data-fancybox data-src="#consulting">ПРИНЯТЬ УЧАСТИЕ</button>
+                    </div>
+                    <div class="search_warn">
+                        <p class="subtitle">Введите название или URL компании</p>
+=                    </div>
+                </div>
+            </div>
+
         </section>
         <section class="already mw-lg">
             <div class="subtitle">Уже учавствуют:</div>
@@ -396,6 +436,19 @@
                 <div class="venue-col">
                     <div class="subtitle">Место на карте:</div>
                     <div class="map">
+                        <div class="intro_info-wrap glass">
+                            <div class="intro_info">
+                                <div class="intro_date">
+                                    16:00<br>
+                                    27 февраля 2026
+                                </div>
+                                <div class="subtitle">
+                                    ”Ивент Пространство Бетон”
+                                    Кальварийская 17
+                                </div>
+                                <button class="button-style-1">БИЛЕТ НА МЕРОПРИЯТИЕ</button>
+                            </div>
+                        </div>
                         <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Acd3f5352141b10322474d3b5cfc45650cfb58f6139123f6757da197b29a3ae9d&amp;width=100%25&amp;height=538&amp;lang=ru_RU&amp;scroll=true"></script>
                     </div>
                 </div>
@@ -444,7 +497,7 @@
 		</form>
 	</div>
 	<div class="popup" id="thanks">
-		<p class="h4">Спасибо за доверие</p>
+		<p class="h4">Спасибо!</p>
 		<div class="exclamation">
 			<p>Спасибо, вы участвуете, форма закроется через <span id="thanks_timer">5</span>с.</p>
 		</div>
