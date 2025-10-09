@@ -167,9 +167,3 @@ if (commentBlock) {
     typeWriter();
   }
 }
-
-
-
-
-
-

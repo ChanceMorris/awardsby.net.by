@@ -35,10 +35,11 @@
     </div>
     <header class="header-fixed">
         <div class="header">
-            <a href="" class="logo">
-                <img src="img/logo.png" alt="Логотип awardsby.net">
+            <a href="/" class="logo">
+            <img src="img/logo.png" alt="Логотип">
             </a>
 
+            <!-- Десктопное меню -->
             <nav class="menu">
                 <a href="#about">О НАС</a>
                 <a href="#why">ЗАЧЕМ И ПОЧЕМУ</a>
@@ -48,6 +49,37 @@
             </nav>
 
             <button class="button-style-1" data-fancybox data-src="#consulting">ПРИНЯТЬ УЧАСТИЕ</button>
+
+            <!-- Бургер -->
+            <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div class="mobile-menu-overlay"></div>
+
+        <!-- Мобильное меню -->
+        <div class="mobile-menu">
+            <!-- Кнопка закрытия -->
+            <button class="menu-close" aria-label="Закрыть меню">
+            <span></span>
+            <span></span>
+            </button>
+
+            <nav class="mobile-nav">
+                <a href="#about">О НАС</a>
+                <a href="#why">ЗАЧЕМ И ПОЧЕМУ</a>
+                <a href="#participants">УЧАСТНИКИ</a>
+                <a href="#venue">МЕСТО</a>
+                <a href="#charity">БЛАГОТВОРИТЕЛЬНОСТЬ</a>
+
+                <!-- Кнопка участия -->
+                <button class="button-style-1" data-fancybox data-src="#consulting">ПРИНЯТЬ УЧАСТИЕ</button>
+
+            </nav>
         </div>
     </header>
     <main>

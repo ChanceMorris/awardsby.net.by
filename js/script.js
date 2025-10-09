@@ -48,7 +48,7 @@ const swiper = new Swiper('.swiper', {
     }
 });
 
-// Скрпит Fancybox
+// Попап Fancybox
 document.addEventListener("DOMContentLoaded", function() {
 	Fancybox.bind("[data-fancybox]", {
 		infinite: false,
@@ -60,6 +60,43 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 });
+
+// Бургер меню с GSAP
+document.addEventListener("DOMContentLoaded", () => {
+  const burger = document.getElementById("burger");
+  const overlay = document.querySelector(".mobile-menu-overlay");
+  const menu = document.querySelector(".mobile-menu");
+  const closeBtn = document.querySelector(".menu-close");
+  const links = document.querySelectorAll(".mobile-nav a, .mobile-nav button");
+
+  let menuOpen = false;
+
+  // GSAP timeline только для меню (бургер не анимируем)
+  const tl = gsap.timeline({ paused: true, reversed: true });
+
+  tl.to(overlay, { opacity: 1, pointerEvents: "auto", duration: 0.25, ease: "power2.out" })
+    .to(menu, { right: 0, duration: 0.35, ease: "power4.out" }, "<")
+    .fromTo(
+      links,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, ease: "power2.out" },
+      "-=0.1"
+    );
+
+  function toggleMenu(open) {
+    menuOpen = open;
+    burger.classList.toggle("active", open);
+    document.body.classList.toggle("no-scroll", open);
+    if (open) tl.play();
+    else tl.reverse();
+  }
+
+  burger.addEventListener("click", () => toggleMenu(!menuOpen));
+  closeBtn.addEventListener("click", () => toggleMenu(false));
+  overlay.addEventListener("click", () => toggleMenu(false));
+  links.forEach(el => el.addEventListener("click", () => toggleMenu(false)));
+});
+
 
 // ===== Поиск компаний с подсказками, JSON и GSAP-анимацией =====
 document.addEventListener("DOMContentLoaded", () => {
