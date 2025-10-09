@@ -238,3 +238,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!searchSection.contains(e.target)) suggestionsBox.hidden = true;
   });
 });
+
