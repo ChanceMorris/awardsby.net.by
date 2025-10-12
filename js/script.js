@@ -1,4 +1,4 @@
-const swiper = new Swiper('.swiper', {
+const swiperAlready = new Swiper('.already_slider .swiper', {
     slidesPerView: '6',
     centeredSlides: true,
     spaceBetween: 50,
@@ -9,37 +9,31 @@ const swiper = new Swiper('.swiper', {
         prevEl: '.swiper-controls-next',
     },
     breakpoints: {
-        // when window width is >= 320px
         320: {
             slidesPerView: 1,
             spaceBetween: 20,
             centeredSlides: true
         },
-        // when window width is >= 480px
         480: {
             slidesPerView: 2,
             spaceBetween: 30,
             centeredSlides: true
         },
-        // when window width is >= 768px
         768: {
             slidesPerView: 3,
             spaceBetween: 40,
             centeredSlides: true
         },
-        // when window width is >= 1024px
         1024: {
             slidesPerView: 4,
             spaceBetween: 50,
             centeredSlides: true
         },
-        // when window width is >= 1200px
         1200: {
             slidesPerView: 5,
             spaceBetween: 50,
             centeredSlides: true
         },
-        // when window width is >= 1440px
         1440: {
             slidesPerView: 6,
             spaceBetween: 50,
@@ -47,6 +41,27 @@ const swiper = new Swiper('.swiper', {
         }
     }
 });
+
+const swiperWhy = new Swiper('.swiper_why .swiper', {
+  slidesPerView: 1,
+  loop: true,
+  speed: 800,
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true
+  },
+  autoplay: {
+    delay: 9000,
+    disableOnInteraction: false
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev'
+  }
+});
+
+
+
 
 // Попап Fancybox
 document.addEventListener("DOMContentLoaded", function() {
@@ -175,7 +190,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!query) {
       showResult("warn", `
         <div class="search_warn">
-            <p class="subtitle">Введите название или URL компании</p>
+          <p class="h2">Введите название или URL</p>
+          <p class="subtitle">Если не нашли себя в списке, примите участие, заполнив форму.</p>
+          <button class="button-style-1" data-fancybox data-src="#consulting">ПРИНЯТЬ УЧАСТИЕ</button>
         </div>
       `);
       return;
@@ -185,9 +202,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (selectedCompany) {
       showResult("success", `
         <div class="search_success">
-            <h2>Вы участвуете!</h2>
-            <p class="subtitle">Узнать результаты можно на предстоящем мероприятии</p>
-            <button class="button-style-1">ПОСЕТИТЬ МЕРОПРИЯТИЕ</button>
+          <h2>Вы участвуете!</h2>
+          <p class="subtitle">Узнать результаты можно на предстоящем мероприятии</p>
+          <button class="button-style-1">ПОСЕТИТЬ МЕРОПРИЯТИЕ</button>
         </div>
       `);
       return;
@@ -203,17 +220,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (found) {
       showResult("success", `
         <div class="search_success">
-            <h2>Вы участвуете!</h2>
-            <p class="subtitle">Узнать результаты можно на предстоящем мероприятии</p>
-            <button class="button-style-1">ПОСЕТИТЬ МЕРОПРИЯТИЕ</button>
+          <h2>Вы участвуете!</h2>
+          <p class="subtitle">Узнать результаты можно на предстоящем мероприятии</p>
+          <button class="button-style-1">ПОСЕТИТЬ МЕРОПРИЯТИЕ</button>
         </div>
       `);
     } else {
       showResult("error", `
         <div class="search_error">
-            <h2>Мы не нашли вас</h2>
-            <p class="subtitle">Примите участие!</p>
-            <button class="button-style-1" data-fancybox data-src="#consulting">ПРИНЯТЬ УЧАСТИЕ</button>
+          <p class="h2">Мы не нашли вас</p>
+          <p class="subtitle">Если не нашли себя в списке, примите участие, заполнив форму.</p>
+          <button class="button-style-1" data-fancybox data-src="#consulting">ПРИНЯТЬ УЧАСТИЕ</button>
         </div>
       `);
     }
@@ -238,4 +255,3 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!searchSection.contains(e.target)) suggestionsBox.hidden = true;
   });
 });
-

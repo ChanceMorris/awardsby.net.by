@@ -125,9 +125,12 @@ glassBlocks.forEach((block) => {
   });
 });
 
-const commentBlock = document.querySelector(".comment_review");
+// === Анимация печати текста для всех блоков .comment_review ===
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
-if (commentBlock) {
+document.querySelectorAll(".comment_review").forEach((commentBlock) => {
   const fullHTML = commentBlock.innerHTML.trim(); // сохраняем оригинальный HTML
   commentBlock.innerHTML = ""; // очищаем блок перед анимацией
 
@@ -141,21 +144,18 @@ if (commentBlock) {
 
   function typeWriter() {
     if (i < fullHTML.length) {
-      // добавляем по одному символу HTML
       commentBlock.innerHTML =
         fullHTML.slice(0, i) + '<span class="cursor">|</span>';
       i++;
       setTimeout(typeWriter, typingSpeed);
     } else {
-      // оставляем курсор в конце и запускаем мигание
       commentBlock.innerHTML = fullHTML;
       commentBlock.appendChild(cursor);
     }
   }
 
-  // Запуск при появлении блока на экране (если GSAP ScrollTrigger подключен)
+  // === Запуск при появлении на экране (ScrollTrigger, если доступен) ===
   if (window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.create({
       trigger: commentBlock,
       start: "top 85%",
@@ -163,7 +163,71 @@ if (commentBlock) {
       onEnter: () => typeWriter()
     });
   } else {
-    // fallback — если ScrollTrigger нет, запускаем сразу
+    // fallback — если GSAP ScrollTrigger не подключен
     typeWriter();
   }
-}
+});
+
+
+
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const numFigures = 5; // сколько фигур
+//   const figurePaths = Array.from({ length: numFigures }, (_, i) => `img/artboard_${i + 1}.png`);
+
+//   const figures = [];
+
+//   // Создаём и добавляем фигуры в DOM
+//   figurePaths.forEach((src) => {
+//     const fig = document.createElement("img");
+//     fig.src = src;
+//     fig.classList.add("floating-figure");
+//     document.body.appendChild(fig);
+//     figures.push(fig);
+//   });
+
+//   // Расставляем и анимируем
+//   figures.forEach((fig) => {
+//     const size = gsap.utils.random(60, 180); // случайный размер
+//     const left = gsap.utils.random(0, window.innerWidth - size);
+//     const top = gsap.utils.random(0, window.innerHeight * 1.5); // немного ниже экрана
+//     const rot = gsap.utils.random(-20, 20);
+
+//     Object.assign(fig.style, {
+//       position: "fixed",
+//       left: `${left}px`,
+//       top: `${top}px`,
+//       width: `${size}px`,
+//       height: "auto",
+//       opacity: 0.4,
+//       transform: `rotate(${rot}deg)`,
+//       pointerEvents: "none",
+//       zIndex: 0,
+//     });
+
+//     // Плавное “плавание”
+//     gsap.to(fig, {
+//       duration: gsap.utils.random(8, 16),
+//       x: `+=${gsap.utils.random(-80, 80)}`,
+//       y: `+=${gsap.utils.random(-60, 60)}`,
+//       rotation: `+=${gsap.utils.random(-25, 25)}`,
+//       ease: "sine.inOut",
+//       repeat: -1,
+//       yoyo: true,
+//     });
+
+//     // Появление (fade-in)
+//     gsap.fromTo(fig, { opacity: 0 }, { opacity: 0.4, duration: 2, ease: "power1.out" });
+//   });
+
+//   // Перерасставляем при ресайзе
+//   window.addEventListener("resize", () => {
+//     figures.forEach((fig) => {
+//       const size = parseFloat(fig.style.width);
+//       const left = gsap.utils.random(0, window.innerWidth - size);
+//       const top = gsap.utils.random(0, window.innerHeight * 1.5);
+//       gsap.to(fig, { left, top, duration: 1.5, ease: "power2.out" });
+//     });
+//   });
+// });
